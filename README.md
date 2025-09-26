@@ -1,8 +1,8 @@
 ## bruteforce-wifi-wpa2
 
-#Requirements 
-A windows PC
-Kali Linux VM
-Wifi NIC(supports monitor mode)
-A GPU with OpenCL or CUDA support 
-hashcat
+#Requirements<br/> 
+A windows PC<br/>
+Kali Linux VM<br/>
+Wifi NIC(supports monitor mode)<br/>
+A GPU with OpenCL or CUDA support<br/>
+hashcat<br/>
