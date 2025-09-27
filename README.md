@@ -1,4 +1,4 @@
-## bruteforce-wifi-wpa2
+## bruteforce-wifi-wpa2, educational purposes only 
 
 # Requirements <br/> 
 A windows PC<br/>
